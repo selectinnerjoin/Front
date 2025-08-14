@@ -1,0 +1,423 @@
+/* --- Variables CSS Personalizadas (equivalente a tus variables SCSS) --- */
+:root {
+    --primary-color: #1d4ed8;
+    --primary-light: #3b82f6;
+    --primary-dark: #1e3a8a;
+    --secondary-color: #0ea5e9;
+    --secondary-light: #50f0ff;
+    --secondary-dark: #009ba9;
+    --dark-bg: #334155;
+    --dark-bg-light: #3a475d;
+    --light-text: #f8fafc;
+    --light-color: white;
+    --light-text-muted: rgba(248, 250, 252, 0.7);
+    /* Calculado de $light-text, 0.7 */
+    --dark-text: #1e293b;
+    --hover-bg: #f0f0f0;
+    --scrollbar-thumb: #888;
+    --scrollbar-thumb-hover: #555;
+    --scrollbar-track: #f1f1f1;
+    --state-primary: #3b82f6;
+    --state-accent: #0ea5e9;
+    --state-warn: #ef4444;
+    --state-tertiary: #8b5cf6;
+    --border-radius-lg: 2rem;
+    --border-radius-md: 1rem;
+    --border-radius-sm: 0.5rem;
+
+    /* RGB para los fondos RGBA en hover de los botones, si no están definidos globalmente */
+    --primary-color-rgb: 29, 78, 216;
+    /* RGB de #1d4ed8 */
+    --secondary-color-rgb: 14, 165, 233;
+    /* RGB de #0ea5e9 */
+    --state-warn-rgb: 239, 68, 68;
+    /* RGB de #ef4444 */
+}
+
+/* --- Base de la Tarjeta y el Contenedor --- */
+mat-card {
+    padding: 30px;
+    /* Más padding para una sensación premium */
+    border-radius: var(--border-radius-lg);
+    /* Esquinas muy redondeadas */
+    background-color: var(--light-color);
+    /* Fondo blanco por defecto */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    /* Sombra elegante */
+    margin: 30px auto;
+    max-width: 1200px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Borde muy sutil */
+    transition: all 0.3s ease-in-out;
+    /* Transición para hover */
+}
+
+mat-card:hover {
+    transform: translateY(-5px);
+    /* Efecto de elevación al pasar el ratón */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    /* Sombra más pronunciada */
+}
+
+/* --- Título de la Tarjeta --- */
+h2 {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--dark-text);
+    /* Color de texto oscuro */
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    /* Usar la fuente Inter */
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    /* Línea más ancha */
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-light), var(--secondary-color));
+    /* Degradado vibrante */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* --- Contenedor Principal de la Tabla --- */
+.main-table {
+    width: 100%;
+    border-collapse: separate;
+    /* Permite bordes redondeados en las celdas */
+    border-spacing: 0;
+    table-layout: fixed;
+    overflow: hidden;
+    /* Asegura que los bordes redondeados se apliquen correctamente */
+    border-radius: var(--border-radius-md);
+    /* Bordes redondeados para la tabla completa */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Sombra para levantar la tabla */
+    background-color: var(--light-color);
+    /* Fondo de la tabla */
+}
+
+/* --- Filas de Encabezado --- */
+.mat-header-row {
+    background-color: var(--primary-color);
+    /* Fondo oscuro para la cabecera */
+    color: var(--light-text);
+    /* Texto claro para la cabecera */
+}
+
+/* Modo Oscuro para la cabecera */
+@media (prefers-color-scheme: dark) {
+    .mat-header-row {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+    }
+}
+
+/* --- Celdas de Encabezado --- */
+.mat-header-cell {
+    font-weight: 700;
+    padding: 18px 20px;
+    /* Más padding para cabeceras */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none !important;
+    /* Eliminar bordes de celdas individuales */
+    background: transparent;
+    color: inherit;
+    /* Hereda el color de la fila (.mat-header-row) */
+    white-space: nowrap;
+    font-size: 1em;
+    position: sticky;
+    /* Cabeceras pegajosas al scroll horizontal */
+    top: 0;
+    z-index: 1;
+    /* Asegura que estén por encima de las filas */
+}
+
+/* Bordes redondeados para las esquinas de la cabecera */
+.mat-header-cell:first-child {
+    border-top-left-radius: var(--border-radius-md);
+}
+
+.mat-header-cell:last-child {
+    border-top-right-radius: var(--border-radius-md);
+}
+
+/* --- Filas de Datos --- */
+.mat-row {
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    /* Transiciones suaves */
+    background-color: var(--light-color);
+    /* Fondo blanco para filas */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    /* Separador sutil entre filas */
+}
+
+/* Modo Oscuro para las filas de datos */
+@media (prefers-color-scheme: dark) {
+    .mat-row {
+        background-color: var(--dark-bg);
+    }
+}
+
+.mat-row:hover {
+    background-color: var(--hover-bg);
+    /* Color de fondo al pasar el ratón */
+    transform: translateY(-2px);
+    /* Efecto de "lift" sutil */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    /* Sombra al pasar el ratón */
+}
+
+/* Modo Oscuro para el hover de las filas */
+@media (prefers-color-scheme: dark) {
+    .mat-row:hover {
+        background-color: var(--dark-bg-light);
+    }
+}
+
+/* Eliminar el borde inferior de la última fila */
+.mat-row:last-child {
+    border-bottom: none;
+}
+
+/* --- Celdas de Datos --- */
+.mat-cell {
+    padding: 15px 20px;
+    /* Padding generoso */
+    background-color: transparent;
+    /* Fondo transparente para que la fila controle el color */
+    border: none !important;
+    /* Eliminar bordes de celdas individuales */
+    font-size: 0.95rem;
+    color: var(--dark-text);
+    text-align: left;
+    justify-content: flex-start;
+}
+
+/* Modo Oscuro para el texto de las celdas */
+@media (prefers-color-scheme: dark) {
+    .mat-cell {
+        color: var(--light-text);
+    }
+}
+
+/* Ajustes para las esquinas redondeadas de las celdas en la primera y última fila */
+.mat-row:first-of-type .mat-cell:first-of-type {
+    border-top-left-radius: var(--border-radius-md);
+}
+
+.mat-row:first-of-type .mat-cell:last-of-type {
+    border-top-right-radius: var(--border-radius-md);
+}
+
+.mat-row:last-child .mat-cell:first-of-type {
+    border-bottom-left-radius: var(--border-radius-md);
+}
+
+.mat-row:last-child .mat-cell:last-of-type {
+    border-bottom-right-radius: var(--border-radius-md);
+}
+
+/* --- Columna de Acciones --- */
+.mat-column-actions {
+    text-align: center;
+    width: 150px;
+    /* Espacio dedicado para los botones */
+    flex-shrink: 0;
+}
+
+/* --- Botones de Ícono (Acciones) --- */
+.mat-icon-button {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    /* Botones circulares */
+    margin: 0 4px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-icon-button mat-icon {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+}
+
+.mat-icon-button.mat-primary {
+    color: var(--primary-color);
+    background-color: transparent;
+    /* Fondo transparente por defecto */
+}
+
+.mat-icon-button.mat-primary:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    /* Fondo sutil al pasar el ratón */
+    transform: scale(1.1);
+    /* Efecto de escala */
+    box-shadow: 0 2px 8px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.mat-icon-button.mat-warn {
+    color: var(--state-warn);
+    background-color: transparent;
+}
+
+.mat-icon-button.mat-warn:hover {
+    background-color: rgba(var(--state-warn-rgb), 0.1);
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(var(--state-warn-rgb), 0.2);
+}
+
+/* --- Paginador --- */
+mat-paginator {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    /* Borde superior sutil */
+    background-color: var(--light-color);
+    padding: 15px 0;
+    /* Más padding para el paginador */
+    border-bottom-left-radius: var(--border-radius-md);
+    border-bottom-right-radius: var(--border-radius-md);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    /* Sombra sutil en la parte inferior */
+    color: var(--dark-text);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Modo Oscuro para el paginador */
+@media (prefers-color-scheme: dark) {
+    mat-paginator {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* --- Mensaje de "No Data" --- */
+.no-data-message {
+    text-align: center;
+    padding: 40px;
+    color: #757575;
+    font-style: italic;
+    background-color: var(--gemini-grey-light);
+    font-size: 1.1em;
+    border-bottom-left-radius: var(--border-radius-md);
+    border-bottom-right-radius: var(--border-radius-md);
+    border-top: 1px solid var(--gemini-grey-medium);
+}
+
+/* --- Estilos para ordenar (mat-sort-header) --- */
+.mat-sort-header-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.mat-sort-header-content {
+    color: inherit !important;
+    /* Hereda el color del header-cell */
+}
+
+.mat-sort-header-arrow {
+    color: rgba(var(--primary-light-rgb), 0.7) !important;
+    /* Color de la flecha de ordenación */
+    opacity: 1 !important;
+}
+
+/* Necesitamos definir estas variables RGB para los RGBA en hover de los botones */
+/* Para usar RGB en rgba(), debes tener los valores RGB sin '#' */
+:root {
+    --primary-color-rgb: 29, 78, 216;
+    --state-warn-rgb: 239, 68, 68;
+    --primary-light-rgb: 59, 130, 246;
+    /* RGB de #3b82f6 */
+}
+
+
+/* --- Estilos Responsive (manteniendo tus media queries) --- */
+@media screen and (max-width: 1199px) {
+    .main-table {
+        min-width: 1000px;
+    }
+
+    .mat-header-cell,
+    .mat-cell {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    mat-card {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h2::after {
+        width: 50px;
+    }
+
+    .main-table {
+        min-width: 800px;
+    }
+
+    .mat-header-cell,
+    .mat-cell {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    mat-card {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    h2::after {
+        width: 40px;
+    }
+
+    .main-table {
+        min-width: 700px;
+    }
+
+    .mat-header-cell,
+    .mat-cell {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+        white-space: normal;
+        /* Permite que el texto se envuelva en pantallas pequeñas */
+    }
+
+    .mat-icon-button {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+    }
+
+    .mat-icon-button mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+    }
+}
